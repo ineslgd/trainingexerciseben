@@ -35,13 +35,13 @@ RSpec.describe Review, type: :model do
     it 'should not persist Review with invalid rating' do
       review = FactoryBot.build(:review, rating: -1)
       review.validate
-      expect(review.errors.full_messages).to include("Rating must be greater than 0")
+      expect(review.errors.full_messages).to include("Rating must be in 0..5")
     end
 
     it 'should not persist Review with invalid description' do
-      review = FactoryBot.build(:review, content: 'a' * 281)
+      review = FactoryBot.build(:review, content: 'a' * 115)
       review.validate
-      expect(review.errors.full_messages).to include("Content is too long (maximum is 280 characters)")
+      expect(review.errors.full_messages).to include("Content is too long (maximum is 114 characters)")
     end
   end
 end

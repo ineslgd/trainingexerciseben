@@ -1,4 +1,4 @@
-FactoryBot.define do
+ FactoryBot.define do
   factory :review do
     content { Faker::Lorem.paragraph }
     rating { rand(1..5) }

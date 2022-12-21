@@ -38,10 +38,10 @@ RSpec.describe Tree, type: :model do
       expect(tree.errors.full_messages).to include("Quantity per year can't be blank")
     end
 
-    it 'should not persist Tree without fruit' do
-      tree = FactoryBot.build(:tree, fruit: nil)
+    it 'should not persist Tree without fruit_type' do
+      tree = FactoryBot.build(:tree, fruit_type: nil)
       tree.validate
-      expect(tree.errors.full_messages).to include("Fruit can't be blank")
+      expect(tree.errors.full_messages).to include("Fruit type can't be blank")
     end
 
     it 'should not persist Tree without description' do
@@ -50,10 +50,10 @@ RSpec.describe Tree, type: :model do
       expect(tree.errors.full_messages).to include("Description can't be blank")
     end
 
-    it 'should not persist Tree with invalid fruit' do
-      tree = FactoryBot.build(:tree, fruit: 'Patato')
+    it 'should not persist Tree with invalid fruit_type' do
+      tree = FactoryBot.build(:tree, fruit_type: 'Patato')
       tree.validate
-      expect(tree.errors.full_messages).to include("Fruit is not included in the list")
+      expect(tree.errors.full_messages).to include("Fruit type is not included in the list")
     end
 
     it 'should not persist Tree with invalid price per year' do

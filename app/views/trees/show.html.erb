@@ -1,0 +1,18 @@
+
+<h2> <%= @tree.name.capitalize %></h2> <br>
+<h3> Located at <%= @tree.address %></h3> <br>
+<h4> Fruit type: <%= @tree.fruit_type %></h4> <br>
+<p> About this tree: <%= @tree.description %></p> <br>
+<h4> Yearly price: <%= @tree.price_per_year %>€</h4> <br>
+<h4> Quantity produced yearly: <%= @tree.quantity_per_year %></h4> <br>
+
+<h5>Interested in adopting this tree? </h5>
+<%= render "adoptions/form", adoption: @adoption, tree: @tree %>
+<%# <p><strong>Adoptions</strong></p>
+<ul >
+  <% @tree.adoptions.each do |adoption| %>
+    <%# <li><%= adoption.name</li> %>
+  <%# <% end %>
+<%# </ul> %>
+
+<%= link_to "delete this tree", tree_path(@tree), class: "btn", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this tree?" } %>
